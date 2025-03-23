@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Challenge CTF - Étape 1</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #6200ea;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 { margin: 0; font-size: 2.5rem; }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #1E1E1E;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    .info {
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      background-color: #3b82f6;
+    }
+    .next-link {
+      display: block;
+      text-align: right;
+      margin-top: 20px;
+      color: #bb86fc;
+      text-decoration: none;
+    }
+    .next-link:hover { text-decoration: underline; }
+    code {
+      background-color: #333;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+    input[type="text"] {
+      padding: 8px;
+      border-radius: 4px;
+      border: none;
+      width: 80%;
+      margin-right: 10px;
+    }
+    button {
+      padding: 8px 15px;
+      border-radius: 4px;
+      border: none;
+      background-color: #6200ea;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3700b3;
+    }
+    .categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .category {
+      background-color: #272727;
+      padding: 10px 15px;
+      border-radius: 6px;
+      flex: 1;
+      min-width: 150px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+  </style>
+
+</head>
+<body>
+<header>
+  <h1>Capture The Flag - Étape 1</h1>
+</header>
+
+<div class="container">
+  <p>
+    Le but de ce TP va être de te faire découvrir le monde des CTFs au travers de petits challenges.
+  </p>
+
+  <h2>Mais qu'est-ce qu'un CTF ?</h2>
+  <p>
+    C'est ce qu'on appelle un <em>Capture The Flag</em> ou un <em>Capture le drapeau</em> en français. Le but est de retrouver ce qu'on appelle un <code>Flag</code> qui est facilement identifiable par sa forme. Dans ce TP, les flags auront la forme : <code>{FLAG}</code>
+  </p>
+<p>Il existe plusieurs catégories de CTF, par exemple : (tu peux cliquer pour une définition) </p>
+
+  <div class="categories">
+    <div class="category" data-description="Déchiffre les messages codés ou utilise des techniques cryptographiques pour récupérer le flag.">Crypto / Cryptanalyse</div>
+    <div class="category" data-description="Analyse des fichiers ou des traces informatiques pour retrouver les indices menant au flag.">Forensics / Forensic</div>
+    <div class="category" data-description="Manipule des composants ou des systèmes physiques pour extraire le flag caché.">Hardware</div>
+    <div class="category" data-description="Résous des énigmes variées, inspirées de situations réelles ou atypiques pour récupérer ton flag.">Misc / Réaliste</div>
+    <div class="category" data-description="Exploite des vulnérabilités logicielles pour compromettre un système et capturer le flag.">Pwn / Cracking</div>
+    <div class="category" data-description="Décompile et analyse des programmes pour comprendre leur fonctionnement et découvrir le flag.">Reverse</div>
+    <div class="category" data-description="Identifie et exploite des failles sur des applications ou des sites web pour accéder au flag.">Web (Client/Serveur)</div>
+    <div class="category" data-description="Écris ou modifie des scripts et des programmes pour automatiser la récupération du flag.">Programmation</div>
+    <div class="category" data-description="Intercepte, analyse ou manipule du trafic réseau pour trouver les indices vers le flag.">Réseau</div>
+    <div class="category" data-description="Détecte des informations cachées dans des images, du son ou d’autres supports pour révéler le flag.">Stéganographie</div>
+  </div>
+
+  <div id="category-description" class="info" style="display:none;"></div>
+  <p>
+    Dans cet atelier, nos flags correspondront soit à un mot (ayant un sens ou non) ou une phrase.
+  </p>
+  <p>
+    Tout au long de cet atelier, si tu rencontres un souci, n'hésite pas à t'aider d'internet et/ou demander aux organisateurs :D
+  </p>
+
+  <div class="info">
+    Voici le flag que tu dois déchiffrer pour te rendre à la page suivante :<br>
+    <code>{4c 65 47 79 6d 6e 61 73 65}</code>
+  </div>
+
+  <div>
+    <input type="text" id="ascii_code" placeholder="Entre le flag ici..." required minlength="4" maxlength="32" />
+    <button onclick="validate()">Vérifier le flag</button>
+  </div>
+
+</div>
+<script>
+  function validate() {
+    const input = document.getElementById('ascii_code').value;
+    if (input === "LeGymnase") {
+      alert("Bravo ! Tu as trouvé le flag : " + input);
+      window.location.href = "page2.html"; // ⬅ redirection vers la page 2
+    } else {
+      alert("Hmm... Ce n'est pas le bon flag. Essaie encore !");
+    }
+  }
+  document.querySelectorAll('.category').forEach(cat => {
+    cat.addEventListener('click', () => {
+      const descBox = document.getElementById('category-description');
+      descBox.textContent = cat.getAttribute('data-description');
+      descBox.style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
+'

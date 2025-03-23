@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTF - Étape 4</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #6200ea;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #1E1E1E;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    .code-box {
+      background-color: #272727;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+      font-size: 1rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      width: 80%;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      background-color: #6200ea;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3700b3;
+    }
+  </style>
+  <script>
+    function validateStep4() {
+      const input = document.getElementById('flag_input_step4').value.trim();
+      if (input === "ZhunBei_hao") {
+        window.location.href = "https://offuscation.eu/";
+      } else {
+        alert("Ce n'est pas le bon flag. Réessaie.");
+      }
+    }
+  </script>
+</head>
+<body>
+<header>
+  <h1>Dernier défi : Le code caché</h1>
+</header>
+
+<div class="container">
+  <p>Voici un message codé... À toi de le décrypter !</p>
+  <div class="code-box">
+    01001111 01101011 00101100 00100000 01110100 01110101 00100000 01100011 01101111 01101110 01101110 01100001 01101001 01110011 00100000 01101100 01100001 00100000 01100010 01100001 01110011 01100101 00101100 00100000 01110100 01110101 00100000 01110000 01100101 01110101 01111000 00100000 01100011 01101111 01101101 01101101 01100101 01101110 01100011 01100101 01110010 00100000 01110101 01101110 01100101 00100000 01110000 01110010 01100101 01101101 01101001 11000011 10101000 01110010 01100101 00100000 01101101 01101001 01110011 01110011 01101001 01101111 01101110 00101110 00001010 01010000 01101111 01110101 01110010 00100000 01100100 11000011 10101001 01100010 01110101 01110100 01100101 01110010 00100000 01101100 01100001 00100000 01101101 01101001 01110011 01110011 01101001 01101111 01101110 00100000 01110100 01110101 00100000 01100001 01110011 00100000 01101010 01110101 01110011 01110100 01100101 00100000 11000011 10100000 00100000 01110011 01100001 01101001 01110011 01101001 01110010 00100000 01101100 01100101 00100000 01100011 01101111 01100100 01100101 00100000 00111010 00100000 00100000 01111011 01011010 01101000 01110101 01101110 01000010 01100101 01101001 01011111 01101000 01100001 01101111 01111101
+  </div>
+
+  <input type="text" id="flag_input_step4" placeholder="Entre ici le flag décodé...">
+  <br>
+  <button onclick="validateStep4()">Valider le flag</button>
+</div>
+</body>
+</html>

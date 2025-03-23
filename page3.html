@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CTF - Étape 3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #121212;
+      color: #FFFFFF;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #6200ea;
+      padding: 20px;
+      text-align: center;
+    }
+    h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #1E1E1E;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      text-align: center;
+    }
+    }
+    .image-box {
+      margin-bottom: 20px;
+    }
+    .image-box img {
+      width: 50%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+      border: 3px solid #bb86fc;
+    }
+    input[type="text"] {
+      padding: 10px;
+      border-radius: 4px;
+      border: none;
+      width: 80%;
+      margin-top: 20px;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      background-color: #6200ea;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3700b3;
+    }
+  </style>
+
+</head>
+<body>
+<header>
+  <h1>Retourner à la source</h1>
+</header>
+
+<div class="container">
+  <div class="image-box">
+    <img src="hackeur.png" alt="Message potentiel">
+  </div>
+  <p>Un flag se cache ici... mais il ne se voit pas au premier coup d'œil. Parfois, il faut savoir aller voir... dans les coulisses.</p>
+  <!-- Petit indice discret dans le code source : {SOURCEFLAG} -->
+  <input type="text" id="flag_input" placeholder="Entre le flag ici...">
+  <br>
+  <button onclick="validateStep3()">Vérifier le flag</button>
+</div>
+
+
+<script>
+  function validateStep3() {
+    const input = document.getElementById('flag_input').value.trim();
+    if (input === "SOURCEFLAG") {
+      alert("Bravo ! Tu as trouvé le flag !");
+      window.location.href = "page4.html";
+    } else {
+      alert("Ce n'est pas le bon flag. Regarde bien... peut-être dans le code source ?");
+    }
+  }
+</script>
+</body>
+</html>
